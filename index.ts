@@ -1,13 +1,13 @@
-/**  nastavenie konštanty readline*/
+/**  nastavenie konštanty readline */
 const readline = require('readline');
 
-/**  nastavenie konštanty r tak, aby do nej mohol užívateľ písať*/
+/**  nastavenie konštanty rl tak, aby do nej mohol užívateľ písať */
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-/**  pomocou konštanty rl.question sa spýtame na to, aký typ počítania chce používateľ využívať*/
+/**  pomocou konštanty rl.question sa spýtame na to, aký typ počítania chce používateľ využívať */
 rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), odpočítavanie (o), násobenie (n), delenie (d) : ', (answer1) => {
 
     /**  vloženie poďakovania */
@@ -22,7 +22,7 @@ rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), od
                 var result1 = (+num1) + (+num2);
                 /** pomocou console.log ukážeme používateľovi výsledok */
                 console.log(`Súčet týchto čísel je: ${result1}`);
-                /** a pomocou rl.close() zatvorime našu kalkulačku */
+                /** a pomocou rl.close() zatvoríme našu kalkulačku */
                 rl.close();
             });
         });
@@ -36,7 +36,7 @@ rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), od
                 var result2 = (+num1) - (+num2);
                 /** pomocou console.log ukážeme používateľovi výsledok */
                 console.log(`Rozdiel týchto čísel je: ${result2}`);
-                /** a pomocou rl.close() zatvorime našu kalkulačku */
+                /** a pomocou rl.close() zatvoríme našu kalkulačku */
                 rl.close();
             });
         });
@@ -50,7 +50,7 @@ rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), od
                 var result3 = (+num1) * (+num2);
                 /** pomocou console.log ukážeme používateľovi výsledok */
                 console.log(`Súčin týchto čísel je: ${result3}`);
-                /** a pomocou rl.close() zatvorime našu kalkulačku */
+                /** a pomocou rl.close() zatvoríme našu kalkulačku */
                 rl.close();
             });
         });
@@ -64,7 +64,7 @@ rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), od
                 var result4 = (+num1) / (+num2);
                 /** pomocou console.log ukážeme používateľovi výsledok */
                 console.log(`Podiel týchto čísel je: ${result4}`);
-                /** a pomocou rl.close() zatvorime našu kalkulačku */
+                /** a pomocou rl.close() zatvoríme našu kalkulačku */
                 rl.close();
             });
         });
