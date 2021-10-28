@@ -26,6 +26,7 @@ while (numArray.length != 100) {
         integer.caseinArray = true;
 }
 
+//numArray sorts numbers from smallest to largest
 numArray = numArray.sort((num1,num2) => num1 - num2);
 
 //this prints numbers in string
@@ -53,7 +54,7 @@ let evenNums8: string = evenArrayDivBy8.toString();
 console.log("Even numbers divisible by 8 are: " + evenNums8);
 
 
-//this extension prints odd  numbers string
+//this extension prints odd numbers string
 extension.sortNumbers(numArray, oddArray, numArray.length, 1, 2);
 let oddNums: string = oddArray.toString();
 console.log("Odd Numbers are: " + oddNums);
@@ -76,15 +77,15 @@ function randomNumber(min_num : number, max_num : number){
 
 /**
 * This function ensures that numbers are not repeated
-* @param numOfRepeats1 defines number of repeats of this function
-* @param generatedNum defines that value is number
+* @param repeatsControl defines number of repeats of this function
+* @param integerControled defines that value is number
 * @returns boolean
 */
-function controlOfNums(numOfRepeats1: number, generatedNum: number) {
+function controlOfNums(repeatsControl: number, integerControled: number) {
     let control = false;
-    for (let i: number = 0; i <= numOfRepeats1; i++)
+    for (let i: number = 0; i <= repeatsControl; i++)
     {
-        if(generatedNum == numArray[i])
+        if(integerControled == numArray[i])
         {
            control = true;
            break;
