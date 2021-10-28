@@ -1,81 +1,118 @@
-/**  nastavenie konštanty readline */
-const readline = require('readline');
+const MAX_SAFE_INTEGER = 9007199254740991;
+let numArray: number[] = [];
+let evenNumArray: number[] = [];
+let evenNumArray4: number[] = [];
+let evenNumArray6: number[] = [];
+let evenNumArray8: number[] = [];
+let evenNumArray10: number[] = [];
+let oddNumArray: number[] = [];
+let primeNumArray: number[] = [];
+let randomNum;
+let caseinArray = false;
 
-/**  nastavenie konštanty rl tak, aby do nej mohol užívateľ písať */
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+//This while loop defines the number of numbers, their span and not to be repeated
+while (numArray.length != 100) {
+    let randomNum = randomNumber(1 , MAX_SAFE_INTEGER);
+    let caseinArray = comparingNums(numArray.length, randomNum);
+    if (!caseinArray)
+        numArray.push(randomNum);
+        caseinArray = true;
+}
 
-/**  pomocou konštanty rl.question sa spýtame na to, aký typ počítania chce používateľ využívať */
-rl.question('Ahoj, najprv mi povedz, čo chceš počítať? sčítavanie (s), odpočítavanie (o), násobenie (n), delenie (d) : ', (answer1) => {
+numArray = numArray.sort((num1,num2) => num1 - num2);
+let allNums: string = numArray.toString();
+console.log("Generated numbers: " + allNums);
 
-    /**  vloženie poďakovania */
-    console.log('Ďakujem :)')
+divisionNum(numArray, evenNumArray, numArray.length, 0, 2, 0);
+let evenNums: string = evenNumArray.toString();
+console.log("Even Numbers: " + evenNums);
+console.log("2: " + evenNums);
 
-    /**  nastavenie podmienky if*/
-    if (answer1 == 's'){
-        /** pomocou rl.question zistíme čísla s ktorými chce užívateľ počítať */
-        rl.question('Prosím, zadaj prvé číslo : ', (num1) => {
-            rl.question('Prosím, zadaj druhé číslo : ', (num2) => {
-                /** cez premennú var si určíme hodnotu result1 */
-                var result1 = (+num1) + (+num2);
-                /** pomocou console.log ukážeme používateľovi výsledok */
-                console.log(`Súčet týchto čísel je: ${result1}`);
-                /** a pomocou rl.close() zatvoríme našu kalkulačku */
-                rl.close();
-            });
-        });
-    }
-/**  nastavenie podmienky else if*/
-    else if (answer1 == 'o'){
-        /** pomocou rl.question zistíme čísla s ktorými chce užívateľ počítať */
-        rl.question('Prosím, zadaj prvé číslo : ', (num1) => {
-            rl.question('Prosím, zadaj druhé číslo  : ', (num2) => {
-                /** cez premennú var si určíme hodnotu result2 */
-                var result2 = (+num1) - (+num2);
-                /** pomocou console.log ukážeme používateľovi výsledok */
-                console.log(`Rozdiel týchto čísel je: ${result2}`);
-                /** a pomocou rl.close() zatvoríme našu kalkulačku */
-                rl.close();
-            });
-        });
-    }
-/**  nastavenie podmienky else if*/
-    else if (answer1 == 'n'){
-        /** pomocou rl.question zistíme čísla s ktorými chce užívateľ počítať */
-        rl.question('Prosím, zadaj prvé číslo : ', (num1) => {
-            rl.question('Prosím, zadaj druhé číslo  : ', (num2) => {
-                /** cez premennú var si určíme hodnotu result3 */
-                var result3 = (+num1) * (+num2);
-                /** pomocou console.log ukážeme používateľovi výsledok */
-                console.log(`Súčin týchto čísel je: ${result3}`);
-                /** a pomocou rl.close() zatvoríme našu kalkulačku */
-                rl.close();
-            });
-        });
-    }
-/**  nastavenie podmienky else if*/
-    else if (answer1 == 'd'){
-        /** pomocou rl.question zistíme čísla s ktorými chce užívateľ počítať */
-        rl.question('Prosím, zadaj prvé číslo : ', (num1) => {
-            rl.question('Prosím, zadaj druhé číslo : ', (num2) => {
-                /** cez premennú var si určíme hodnotu result4 */
-                var result4 = (+num1) / (+num2);
-                /** pomocou console.log ukážeme používateľovi výsledok */
-                console.log(`Podiel týchto čísel je: ${result4}`);
-                /** a pomocou rl.close() zatvoríme našu kalkulačku */
-                rl.close();
-            });
-        });
-    }
+divisionNum(evenNumArray, evenNumArray4, evenNumArray.length, 0, 4, 0);
+let evenNums4: string = evenNumArray4.toString();
+console.log("4: " + evenNums4);
 
-    /** ak užívateľ nezadá správne hodnoty pri otázke, tak bude presmerovaný na else */
-    else
+divisionNum(evenNumArray, evenNumArray6, evenNumArray.length, 0, 6, 0);
+let evenNums6: string = evenNumArray6.toString();
+console.log("6: " + evenNums6);
+
+divisionNum(evenNumArray, evenNumArray8, evenNumArray.length, 0, 8, 0);
+let evenNums8: string = evenNumArray8.toString();
+console.log("8: " + evenNums8);
+
+divisionNum(numArray, oddNumArray, numArray.length, 1, 2, 0);
+let oddNums: string = oddNumArray.toString();
+console.log("Odd Numbers: " + oddNums);
+
+primeNumArray = primeNumbers(oddNumArray, primeNumArray, oddNumArray.length);
+let primeNums: string = primeNumArray.toString();
+console.log("Prime Numbers: " + primeNumArray);
+
+/**
+ * this function sorts prime numbers
+ * @param fromArray This fromArray gets the numbers from array
+ * @param resultArray This resultArray puts the numbers out in the array
+ * @param numOfRepeats This numOfRepeats contains some number of repeats
+ * @returns something in resultArray
+ */
+function primeNumbers (fromArray: number[], resultArray: number[], numOfRepeats: number)
+{ 
+    for (let i: number = 0; i <= numOfRepeats; i++)
     {
-        /** pomocou console.log vysvetlíme, aby si najprv vybral správnu operáciu */
-        console.log('Ale najprv vyber správnu operáciu ;)');
-        /** a pomocou rl.close() zatvorime kalkulačku, aby do nej mohol užívateľ znova zadať správne hodnoty */
-        rl.close();
+        let isPrime = true;
+        for (let j: number = 2; j * j < fromArray[i]; j++) {
+            if(fromArray[i] % j == 0 )
+            {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            resultArray.push(fromArray[i]); 
+        }
     }
-});
+    return resultArray;
+}
+
+/**
+ * This function generates random numbers
+ * @param min_num defines that min_num is number
+ * @param max_num defines that max_num is number
+ * @returns integer from span
+ */
+function randomNumber(min_num : number, max_num : number){
+    return Math.floor(Math.random() * (max_num - min_num)) + min_num;
+}
+
+/**
+ * This function ensures that numbers are not repeated
+ * @param numOfRepeats1 
+ * @param generatedNum 
+ * @returns 
+ */
+function comparingNums(numOfRepeats1: number, generatedNum: number) {
+    let comparing = false;
+    for (let i: number = 0; i <= numOfRepeats1; i++)
+    {
+        if(generatedNum == numArray[i])
+        {
+           comparing = true;
+           break;
+        }
+    }
+    if (comparing)
+    return true;
+    if (!comparing)
+    return false;
+}
+
+function divisionNum(fromArray:number[], resultArray: number[], numOfRepeats: number, remainder: number, divider: number, i: number) {
+    for (let i: number = 0; i <= numOfRepeats; i++)
+    {
+      if(fromArray[i] % divider == remainder)
+      {
+        resultArray.push(fromArray[i]);
+      }  
+    }
+    return resultArray;
+}
