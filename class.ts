@@ -1,4 +1,4 @@
-class division {
+class extension {
     /**
      * this function sorts the numers by their divider
      * @param fromArray This fromArray gets the numbers from array
@@ -6,9 +6,9 @@ class division {
      * @param numOfRepeats This numOfRepeats contains some number of repeats
      * @param remainder defines that remaing value is number
      * @param divider define that divider is number
-     * @returns something in 
+     * @returns something in resultArray
      */
-    public static divisionNum(fromArray: number[], resultArray: number[], numOfRepeats: number, remainder: number, divider: number) {
+    public static sortNumbers(fromArray: number[], resultArray: number[], numOfRepeats: number, remainder: number, divider: number) {
         for (let i: number = 0; i <= numOfRepeats; i++)
         {
           if(fromArray[i] % divider == remainder)
@@ -25,7 +25,7 @@ class division {
      * @param numOfRepeats This numOfRepeats contains some number of repeats
      * @returns something in resultArray
      */
-    public static primeNumbers(fromArray:number[], resultArray: number[], numOfRepeats: number)
+    public static sortPrimeNumbers(fromArray:number[], resultArray: number[], numOfRepeats: number)
     { 
     for (let i: number = 0; i <= numOfRepeats; i++)
     {
@@ -44,4 +44,4 @@ class division {
     return resultArray;
     }
 }
-export default division;
+export default extension;
