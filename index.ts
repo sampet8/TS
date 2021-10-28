@@ -31,11 +31,12 @@ numArray = numArray.sort((num1,num2) => num1 - num2);
 let allNums: string = numArray.toString();
 console.log("Generated numbers are: " + allNums);
 
-//these divisions ensure that the even numbers are divided according to their divisors
+//this division prints even numbers with their divider
 division.divisionNum(numArray, evenArray, numArray.length, 0, 2);
 let evenNums: string = evenArray.toString();
 console.log("Even Numbers are: " + evenNums);
 
+//these divisions prints even numbers with their divider
 console.log("Even numbers divisible by 2 are: " + evenNums);
 
 division.divisionNum(evenArray, evenArrayDivBy4, evenArray.length, 0, 4);
@@ -51,12 +52,12 @@ let evenNums8: string = evenArrayDivBy8.toString();
 console.log("Even numbers divisible by 8 are: " + evenNums8);
 
 
-//this division ensure that string of odd numbers is created
+//this division prints odd  numbers string
 division.divisionNum(numArray, oddArray, numArray.length, 1, 2);
 let oddNums: string = oddArray.toString();
 console.log("Odd Numbers are: " + oddNums);
 
-//this prime Array 
+//this prime Array prints prime numbers string
 primeNumArray = division.primeNumbers(oddArray, primeNumArray, oddArray.length);
 let primeNums: string = primeNumArray.toString();
 console.log("Prime Numbers are: " + primeNumArray);
