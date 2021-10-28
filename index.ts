@@ -1,78 +1,66 @@
-const MAX_SAFE_INTEGER = 9007199254740991;
+import division from "./class";
+import nums from "./type";
+
+
+
+let numbers: nums = {
+    MAX_SAFE_INTEGER: 9007199254740991,
+    caseinArray: false
+}
 let numArray: number[] = [];
-let evenNumArray: number[] = [];
-let evenNumArray4: number[] = [];
-let evenNumArray6: number[] = [];
-let evenNumArray8: number[] = [];
-let evenNumArray10: number[] = [];
-let oddNumArray: number[] = [];
+let evenArray: number[] = [];
+let evenArrayDivBy4: number[] = [];
+let evenArrayDivBy6: number[] = [];
+let evenArrayDivBy8: number[] = [];
+let oddArray: number[] = [];
 let primeNumArray: number[] = [];
-let randomNum;
-let caseinArray = false;
 
 //This while loop defines the number of numbers, their span and not to be repeated
 while (numArray.length != 100) {
-    let randomNum = randomNumber(1 , MAX_SAFE_INTEGER);
-    let caseinArray = comparingNums(numArray.length, randomNum);
+    let randomNum = randomNumber(1 , numbers.MAX_SAFE_INTEGER);
+    let caseinArray = controlOfNums(numArray.length, randomNum);
+
     if (!caseinArray)
         numArray.push(randomNum);
-        caseinArray = true;
+        numbers.caseinArray = true;
 }
 
 numArray = numArray.sort((num1,num2) => num1 - num2);
+
+//this prints numbers in string
 let allNums: string = numArray.toString();
-console.log("Generated numbers: " + allNums);
+console.log("Generated numbers are: " + allNums);
 
-divisionNum(numArray, evenNumArray, numArray.length, 0, 2, 0);
-let evenNums: string = evenNumArray.toString();
-console.log("Even Numbers: " + evenNums);
-console.log("2: " + evenNums);
+//these divisions ensure that the even numbers are divided according to their divisors
+division.divisionNum(numArray, evenArray, numArray.length, 0, 2);
+let evenNums: string = evenArray.toString();
+console.log("Even Numbers are: " + evenNums);
 
-divisionNum(evenNumArray, evenNumArray4, evenNumArray.length, 0, 4, 0);
-let evenNums4: string = evenNumArray4.toString();
-console.log("4: " + evenNums4);
+console.log("Even numbers divisible by 2 are: " + evenNums);
 
-divisionNum(evenNumArray, evenNumArray6, evenNumArray.length, 0, 6, 0);
-let evenNums6: string = evenNumArray6.toString();
-console.log("6: " + evenNums6);
+division.divisionNum(evenArray, evenArrayDivBy4, evenArray.length, 0, 4);
+let evenNums4: string = evenArrayDivBy4.toString();
+console.log("Even numbers divisible by 4 are: " + evenNums4);
 
-divisionNum(evenNumArray, evenNumArray8, evenNumArray.length, 0, 8, 0);
-let evenNums8: string = evenNumArray8.toString();
-console.log("8: " + evenNums8);
+division.divisionNum(evenArray, evenArrayDivBy6, evenArray.length, 0, 6);
+let evenNums6: string = evenArrayDivBy6.toString();
+console.log("Even numbers divisible by 6 are: " + evenNums6);
 
-divisionNum(numArray, oddNumArray, numArray.length, 1, 2, 0);
-let oddNums: string = oddNumArray.toString();
-console.log("Odd Numbers: " + oddNums);
+division.divisionNum(evenArray, evenArrayDivBy8, evenArray.length, 0, 8);
+let evenNums8: string = evenArrayDivBy8.toString();
+console.log("Even numbers divisible by 8 are: " + evenNums8);
 
-primeNumArray = primeNumbers(oddNumArray, primeNumArray, oddNumArray.length);
+
+//this division ensure that string of odd numbers is created
+division.divisionNum(numArray, oddArray, numArray.length, 1, 2);
+let oddNums: string = oddArray.toString();
+console.log("Odd Numbers are: " + oddNums);
+
+//this prime Array 
+primeNumArray = division.primeNumbers(oddArray, primeNumArray, oddArray.length);
 let primeNums: string = primeNumArray.toString();
-console.log("Prime Numbers: " + primeNumArray);
+console.log("Prime Numbers are: " + primeNumArray);
 
-/**
- * this function sorts prime numbers
- * @param fromArray This fromArray gets the numbers from array
- * @param resultArray This resultArray puts the numbers out in the array
- * @param numOfRepeats This numOfRepeats contains some number of repeats
- * @returns something in resultArray
- */
-function primeNumbers (fromArray: number[], resultArray: number[], numOfRepeats: number)
-{ 
-    for (let i: number = 0; i <= numOfRepeats; i++)
-    {
-        let isPrime = true;
-        for (let j: number = 2; j * j < fromArray[i]; j++) {
-            if(fromArray[i] % j == 0 )
-            {
-                isPrime = false;
-                break;
-            }
-        }
-        if (isPrime) {
-            resultArray.push(fromArray[i]); 
-        }
-    }
-    return resultArray;
-}
 
 /**
  * This function generates random numbers
@@ -85,34 +73,23 @@ function randomNumber(min_num : number, max_num : number){
 }
 
 /**
- * This function ensures that numbers are not repeated
- * @param numOfRepeats1 
- * @param generatedNum 
- * @returns 
- */
-function comparingNums(numOfRepeats1: number, generatedNum: number) {
-    let comparing = false;
+* This function ensures that numbers are not repeated
+* @param numOfRepeats1 defines number of repeats of this function
+* @param generatedNum defines that value is number
+* @returns boolean
+*/
+function controlOfNums(numOfRepeats1: number, generatedNum: number) {
+    let control = false;
     for (let i: number = 0; i <= numOfRepeats1; i++)
     {
         if(generatedNum == numArray[i])
         {
-           comparing = true;
+           control = true;
            break;
         }
     }
-    if (comparing)
+    if (control)
     return true;
-    if (!comparing)
+    if (!control)
     return false;
-}
-
-function divisionNum(fromArray:number[], resultArray: number[], numOfRepeats: number, remainder: number, divider: number, i: number) {
-    for (let i: number = 0; i <= numOfRepeats; i++)
-    {
-      if(fromArray[i] % divider == remainder)
-      {
-        resultArray.push(fromArray[i]);
-      }  
-    }
-    return resultArray;
 }
