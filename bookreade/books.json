@@ -1,0 +1,84 @@
+[
+
+    {
+        "id": 1,
+        "name": ["Deti Kapitána Granta"], 
+        "author": ["Jules Verne"],
+        "genre": "Adventure", 
+        "published": 1987, 
+        "publisher": "Mladé letá",
+        "country_of_origin": "Slovakia", 
+        "pages": 532
+    }, 
+    {
+        "id": 2,
+        "name": ["Bratia Kipovci"], 
+        "author": ["Jules Verne"],
+        "genre": "Adventure", 
+        "published": 1991, 
+        "publisher": "Mladé letá",
+        "country_of_origin": "Slovakia", 
+        "pages": 283
+    }, 
+    {
+        "id": 3,
+        "name": ["Pani Branicanová"], 
+        "author": ["Jules Verne"],
+        "genre": "Adventure", 
+        "published": 1988, 
+        "publisher": "Mladé letá",
+        "country_of_origin": "Slovakia", 
+        "pages": 225
+    }, 
+    {
+        "id": 4,
+        "name": ["Prdiprášok doktora Proktora"], 
+        "author": ["Jo Nesbø"],
+        "genre": "fantasy", 
+        "published": 2014, 
+        "publisher": "Iron Libri",
+        "country_of_origin": "Slovakia", 
+        "pages": 177
+    },
+    {
+        "id": 5,
+        "name": ["časovaňa doktora Proktora"], 
+        "author": ["Jo Nesbø"],
+        "genre": "fantasy", 
+        "published": 2014, 
+        "publisher": "Iron Libri",
+        "country_of_origin": "Slovakia", 
+        "pages": 275
+    }, 
+    {
+        "id": 6,
+        "name": ["Doktor Proktor a koniec sveta"], 
+        "author": ["Jo Nesbø"],
+        "genre": "fantasy", 
+        "published": 2014, 
+        "publisher": "Iron Libri",
+        "country_of_origin": "Slovakia", 
+        "pages": 296
+    },
+    {
+        "id": 7,
+        "name": ["Alfred Hitchcock a traja pátrači"], 
+        "author": ["Robert Arthur"],
+        "genre": "detective", 
+        "published": 1986, 
+        "publisher": "Mladé letá",
+        "country_of_origin": "Slovakia", 
+        "pages": 528
+    },
+    {
+        "id": 8,
+        "name": ["Záhada zjavenej tváre"], 
+        "author": ["Marey V.Carey"],
+        "genre": "detective", 
+        "published": 2014, 
+        "publisher": "Mladé letá",
+        "country_of_origin": "Slovakia", 
+        "pages": 143
+    }
+
+]
