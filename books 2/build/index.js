@@ -11,14 +11,14 @@ var fs_1 = __importDefault(require("fs"));
 var methods_1 = require("./methods");
 var bookreader = (0, express_1.default)();
 var data = fs_1.default.readFileSync("books.json");
-var myJSON = JSON.parse(data.toString());
+var myJson = JSON.parse(data.toString());
 var myMap = new Map();
-myJSON.forEach(function (book) { return myMap.set(book.id, book); });
-console.log(myJSON);
+myJson.forEach(function (book) { return myMap.set(book.id, book); });
+console.log(myJson);
 function createNewMap() {
-    var myJSON = JSON.parse(fs_1.default.readFileSync(("books.json")).toString());
+    var myJson = JSON.parse(fs_1.default.readFileSync(("books.json")).toString());
     var myMap = new Map();
-    myJSON.forEach(function (book) { return myMap.set(book.id, book); });
+    myJson.forEach(function (book) { return myMap.set(book.id, book); });
 }
 function createserver() {
     bookreader.use((0, cors_1.default)());
@@ -30,10 +30,10 @@ function createserver() {
     bookreader.get("/api/library/book/:id/info", function (req, res) {
         createNewMap();
         var id = req.params["id"];
-        var tempid = parseInt(id);
-        var book = myMap.get(tempid);
-        console.log(tempid);
-        if (myMap.has(tempid)) {
+        var bookID = parseInt(id);
+        var book = myMap.get(bookID);
+        console.log(bookID);
+        if (myMap.has(bookID)) {
             var tempbookshort = {
                 id: book.id,
                 name: book.name,
@@ -49,10 +49,10 @@ function createserver() {
     bookreader.post("/api/library/book/:id/info", function (req, res) {
         createNewMap();
         var id = req.params["id"];
-        var tempid = parseInt(id);
-        var book = myMap.get(tempid);
-        console.log(tempid);
-        if (myMap.has(tempid)) {
+        var bookID = parseInt(id);
+        var book = myMap.get(bookID);
+        console.log(bookID);
+        if (myMap.has(bookID)) {
             res.json(book);
         }
         else {
@@ -62,13 +62,14 @@ function createserver() {
     bookreader.put("/api/library/book/:id/add", function (req, res) {
         createNewMap();
         var id = req.params["id"];
-        var tempid = parseInt(id);
-        if (myMap.has(tempid)) {
+        var bookID = parseInt(id);
+        console.log(bookID);
+        if (myMap.has(bookID)) {
             res.json({ id: "Book not found!" });
         }
         else {
-            var addBook = myJSON.push({
-                id: tempid,
+            var addBook = myJson.push({
+                id: bookID,
                 name: req.body["name"],
                 author: req.body["author"],
                 genre: req.body["genre"],
@@ -77,20 +78,19 @@ function createserver() {
                 country_of_origin: req.body["country_of_origin"],
                 pages: req.body["pages"]
             });
-            (0, methods_1.save)(myJSON);
-            console.log(myJSON);
-            res.json(addBook);
-            res.json({ Response: "Book was added!" });
+            (0, methods_1.save)(myJson);
+            console.log(myJson);
+            res.json({ addBook: addBook, Response: "Book was added!" });
         }
     });
     bookreader.delete("/api/library/book/:id/delete", function (req, res) {
         createNewMap();
         var id = req.params["id"];
-        var tempid = parseInt(id);
-        console.log(tempid);
-        if (myMap.has(tempid)) {
-            var deleteJSON = myJSON.filter(function (book) { return book.id !== tempid; });
-            fs_1.default.writeFileSync("books.json", (JSON.stringify(deleteJSON, null, 2)));
+        var bookID = parseInt(id);
+        console.log(bookID);
+        if (myMap.has(bookID)) {
+            var deleteJson = myJson.filter(function (book) { return book.id !== bookID; });
+            fs_1.default.writeFileSync("books.json", (JSON.stringify(deleteJson, null, 2)));
             res.json({ message: "Book was deleted!" });
             createNewMap();
         }

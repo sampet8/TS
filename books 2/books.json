@@ -1,5 +1,19 @@
 [
   {
+    "id": 1,
+    "name": [
+      "Deti Kapitána Granta"
+    ],
+    "author": [
+      "Jules Verne"
+    ],
+    "genre": "Adventure",
+    "published": 1987,
+    "publisher": "Mladé letá",
+    "country_of_origin": "Slovakia",
+    "pages": 532
+  },
+  {
     "id": 2,
     "name": [
       "Bratia Kipovci"

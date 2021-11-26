@@ -19,19 +19,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.save = exports.bookExistence = void 0;
+exports.save = void 0;
 var fs = __importStar(require("fs"));
-/*
-export function searchBook(id: string, books: Book[]) {
-    for (let i=0; i < books.length; i++) {
-        if (books[i].id == id.toString()){
-            return books[i]
-        }
-}}*/
-function bookExistence(book) {
-    return book != undefined;
-}
-exports.bookExistence = bookExistence;
 function save(books) {
     fs.writeFileSync("books.json", (JSON.stringify(books, null, 2)));
 }
