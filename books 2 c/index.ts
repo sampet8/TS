@@ -15,32 +15,7 @@ let myMap = new Map()
 myJson.forEach((book: Book_Short) => myMap.set(book.id,<Book_Short> book))
 console.log(myJson)
 
-/*
-function createNewMap() {
-    const myJson: Book[] = JSON.parse(fs.readFileSync(("books.json")).toString())
-    let myMap = new Map()
-    myJson.forEach((book: Book_Short) => myMap.set(book.id,<Book_Short> book))
-}
-
-let searchAuthor = function (author: string, book: Book) {
-    for(let i = 0; i < book.author.length; i++){
-        if(book.author[i].toLowerCase().includes(author.toLowerCase())){
-            return book
-        }
-    }
-}
-
-
-let searchName = function (name: string, book: Book){
-    for(let i = 0; i < book.name.length; i++){
-        if(book.name[i].toLowerCase().includes(name.toLowerCase())){
-            return book
-        }
-    }
-}*/
-
-
-
+//this function creates server
 function createserver() {
     bookreader.use(cors())
     bookreader.use(json())
